@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>loggin_sucess_main</title>
+    <meta name="description" content="主頁">
+    <meta name="keywords" content="AI資訊">
+    <link rel="icon" href="/assets/images/icon/icon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+    <!--css-->
+    <!-- <link rel="stylesheet" href="loggin_sucess_main.css"> -->
+
+    <!--boxicons css-->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
+
+    <link rel="stylesheet" href="assets/css/templatemo-softy-pinko.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,600;0,700;1,400&display=swap');
+
+
+        * {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Colors*/
+            --body-color: #e4e9f7;
+            --sidebar-color: #fff;
+            --primary-color: #493cdb;
+            --primary-color-light: #ddd;
+            --toggle-color: rgb(77, 72, 72);
+            --text-color: #222020;
+
+            /*Transition*/
+            --tran-02: all 0.2s ease;
+            --tran-03: all 0.3s ease;
+            --tran-04: all 0.4s ease;
+            --tran-05: all 0.5s ease;
+
+        }
+
+        body {
+            height: 100vh;
+            background: var(--body-color);
+            transition: var(--tran-05);
+        }
+
+        /*animation of page changing*/
+        @keyframes transitionPage {
+            from {
+                opacity: 0;
+                transform: rotateX(-10deg);
+            }
+
+            to {
+                opacity: 1;
+                transform: rotateX(0deg);
+            }
+        }
+
+        /*reusebal css*/
+
+        .sidebar .text {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-color);
+            transition: var(--tran-05);
+            white-space: nowrap;
+        }
+
+        .sidebar .image {
+            min-width: 40px;
+            display: flex;
+            align-items: center;
+        }
+
+        body.dark {
+            --body-color: #18191a;
+            --sidebar-color: #242526;
+            --primary-color: #3a3b3c;
+            --primary-color-light: #3a3b3c;
+            --toggle-color: #fff;
+            --text-color: rgb(245, 241, 241);
+            --dragon_ball-color: #e20a0a;
+        }
+
+
+
+
+
+
+
+        /*sidebar*/
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 250px;
+            padding: 10px 14px;
+            background: var(--sidebar-color);
+            transition: var(--tran-05);
+            z-index: 100;
+        }
+
+        .sidebar.close {
+            width: 78px;
+        }
+
+        .sidebar .loggout {
+            transition: var(--tran-05);
+            border: none;
+            font-size: 16px;
+            font-weight: 500;
+            background-color: #fff;
+            height: 100%;
+            width: 250px;
+            text-align: left;
+        }
+
+        .loggout:hover {
+            cursor: pointer;
+            background: var(--primary-color);
+            color: #fff;
+        }
+
+        .sidebar .personal {
+            transition: var(--tran-05);
+            border: none;
+            font-size: 16px;
+            font-weight: 500;
+            background-color: #fff;
+            height: 100%;
+            width: 250px;
+            text-align: left;
+        }
+
+        .personal:hover {
+            cursor: pointer;
+            background: var(--primary-color);
+            color: #fff;
+        }
+
+
+        /*reusebal css*/
+        .sidebar.close .text {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-color);
+            transition: var(--tran-05);
+            white-space: nowrap;
+            opacity: 1;
+        }
+
+        .sidebar.sidebar.close .text {
+            opacity: 0;
+        }
+
+        .sidebar.close .loggout {
+            transition: var(--tran-05);
+            white-space: nowrap;
+            opacity: 0;
+        }
+
+        .sidebar.close .personal {
+            transition: var(--tran-05);
+            white-space: nowrap;
+            opacity: 0;
+        }
+
+        .sidebar .image {
+            min-width: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sidebar li {
+            height: 50px;
+            margin-top: 10px;
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .sidebar li .icons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 50px;
+            font-size: 20px;
+        }
+
+        .sidebar li .icons,
+        .sidebar li .text {
+            color: var(--text-color);
+            transition: var(--tran-05);
+        }
+
+        .sidebar header {
+            position: relative;
+
+        }
+
+        .sidebar .image-text img {
+            width: 50px;
+            border-radius: 30px;
+        }
+
+        .sidebar header .image-text {
+            display: flex;
+            align-items: center;
+        }
+
+        header .image-text .text_header {
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        .text_header .name {
+            font-weight: 600;
+        }
+
+        .text_header .profession {
+            margin-top: -2px;
+        }
+
+        .sidebar header .toggle {
+            position: absolute;
+            top: 50%;
+            right: -25px;
+            transform: translateY(-50%);
+            height: 25px;
+            width: 25px;
+            background: #e20a0a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: var(--sidebar-color);
+            font-size: 30px;
+        }
+
+        .toggle:hover {
+            cursor: pointer;
+        }
+
+
+        body.dark .sidebar header .toggle {
+            color: var(--text-color);
+        }
+
+        .sidebar .menu {
+            margin-top: 35px;
+        }
+
+        .sidebar .search_box {
+            background: var(--primary-color-light);
+            border-radius: 6px;
+            transition: var(--tran-05);
+        }
+
+        .search_box input {
+            height: 100%;
+            width: 100%;
+            outline: none;
+            border: none;
+            border-radius: 6px;
+            background: var(--primary-color-light);
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .sidebar li a {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: var(--tran-05);
+        }
+
+        .sidebar li a:hover {
+            background: var(--primary-color);
+            cursor: pointer;
+        }
+
+        .sidebar li a:hover .icons,
+        .sidebar li a:hover .text {
+            color: var(--sidebar-color);
+            cursor: pointer;
+        }
+
+        body.dark .sidebar li a:hover .icons,
+        body.dark .sidebar li a:hover .text {
+            color: var(--text-color);
+            cursor: pointer;
+        }
+
+        body.dark .loggout {
+            background-color: var(--sidebar-color);
+            color: var(--text-color);
+        }
+
+        body.dark .personal {
+            background-color: var(--sidebar-color);
+            color: var(--text-color);
+        }
+
+        body.dark .loggout:hover {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+        }
+
+        body.dark .personal:hover {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+        }
+
+
+        .sidebar .menu_bar {
+            height: calc(100% - 100px);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-radius: 6px;
+        }
+
+        /*日間夜間模式*/
+
+        .menu_bar .mode {
+            border-radius: 6px;
+            position: relative;
+            background: var(--primary-color-light);
+            transition: var(--tran-05);
+        }
+
+        .menu_bar .mode .moon_sun {
+            height: 50px;
+            width: 60px;
+            display: flex;
+            align-items: center;
+        }
+
+
+        .menu_bar .mode i {
+            position: absolute;
+            transition: var(--tran-05);
+        }
+
+        .menu_bar .mode i.sun {
+            opacity: 0;
+        }
+
+        body.dark .menu_bar .mode i.sun {
+            opacity: 1;
+        }
+
+        body.dark .menu_bar .mode i.moon {
+            opacity: 0;
+        }
+
+        .menu_bar .mode .toggle_switch {
+            position: absolute;
+            right: 0;
+            display: flex;
+            align-items: center;
+            height: 100%;
+            min-width: 52px;
+            cursor: pointer;
+            background: var(--primary-color-light);
+            transition: var(--tran-05);
+            border-radius: 6px;
+        }
+
+        .toggle_switch .switch {
+            position: relative;
+            height: 22px;
+            width: 40px;
+            left: 5px;
+            border-radius: 25px;
+            background: var(--toggle-color);
+        }
+
+        .switch::before {
+            content: '';
+            position: absolute;
+            height: 15px;
+            width: 15px;
+            border-radius: 50%;
+            top: 50%;
+            left: 3px;
+            transform: translateY(-50%);
+            background: var(--sidebar-color);
+            transition: var(--tran-05);
+        }
+
+        body.dark .switch::before {
+            left: 22px;
+        }
+
+
+        /*主頁面*/
+        .home {
+            position: relative;
+            left: 250px;
+            height: 100vh;
+            width: calc(100% - 250px);
+            background: var(--body-color);
+            transition: var(--tran-05);
+            animation: transitionPage 1s;
+        }
+
+        .home .h1_text {
+            font-size: 30px;
+            font-weight: 500;
+            color: var(--text-color);
+            padding: 8px 40px;
+        }
+
+
+
+        .sidebar.close~.home {
+            left: 78px;
+            width: calc(100% - 78px);
+        }
+
+
+        /*main_content img setting*/
+        .h1_text .main_content img {
+            width: auto;
+            display: flex;
+        }
+
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+
+        .chartMenu {
+            width: 100vw;
+            height: 40px;
+            background: #1A1A1A;
+            color: rgba(54, 162, 235, 1);
+        }
+
+        .chartMenu p {
+            padding: 10px;
+            font-size: 20px;
+        }
+
+        .chartCard {
+            width: 90vw;
+            height: calc(100vh - 40px);
+            background: rgba(54, 162, 235, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chartBox {
+            width: 1000px;
+            padding: 20px;
+            border-radius: 20px;
+            border: solid 3px rgba(54, 162, 235, 1);
+            background: white;
+        }
+
+        .select {
+            display: flex;
+            justify-content: center;
+            position: relative;
+            min-width: 250px;
+            height: 50px;
+            border-radius: 25px;
+        }
+
+        .select-box {
+            border: none;
+            appearance: none;
+            padding: 0 30px 0 15px;
+            width: 150px;
+            color: white;
+            background-color: #7674ed;
+            font-size: 20px;
+            border-radius: 3px;
+        }
+
+        .select :hover {
+            background-color: #0e0af1;
+            transition: 1s ease;
+        }
+    </style>
+
+</head>
+
+<!--icons的部分去  https://boxicons.com/ -->
+
+<body>
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="/assets/images/icon/icon.png" alt="dragon_ball">
+                </span>
+
+                <div class="text text_header">
+
+                    <span class="text name">岐黃妙訣</span>
+                    <span class="text profession">網頁版</span>
+                </div>
+
+            </div>
+
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+
+        <div class="menu_bar">
+            <div class="menu">
+
+
+                <ul class="menu_links">
+                    <li class="search_box">
+                        <a>
+                            <i class='bx bx-search icons'></i>
+                            <input type="text" placeholder="搜尋 search">
+                        </a>
+                    </li>
+
+                    <!-- <li class="home_Button" id="home">
+                        <a class="page_top" href="/home">
+                            <i class='bx bx-home-circle icons'></i>
+                            <span class="text nav_text">主頁</span>
+                        </a>
+                    </li> -->
+
+                    <li class="nav_link">
+                        <a>
+                            <i class='bx bx-history icons'></i>
+                            <span class="text nav_text">紀錄病例</span>
+                        </a>
+                    </li>
+
+                    <li class="nav_link">
+                        <a href="/suggestion">
+                            <i class='bx bx-book-content icons'></i>
+                            <button class="personal">問診紀錄</button>
+                        </a>
+                    </li>
+
+
+
+                    <li class="nav_link">
+                        <a href="/personal">
+                            <i class='bx bx-wink-smile icons'></i>
+                            <button class="personal">患者訊息</button>
+                        </a>
+                    </li>
+
+
+                    <li class="nav_link">
+                        <a href="#feedback">
+                            <i class='bx bxs-edit-alt icons'></i>
+                            <span class="text nav_text">使用反饋</span>
+                        </a>
+                    </li>
+
+
+                    <form action="/loggout" method="post">
+                        <li class="nav_link">
+                            <a>
+                                <i class='bx bx-log-out icons'></i>
+                                <button class="loggout">登出</button>
+                            </a>
+                        </li>
+                    </form>
+
+                </ul>
+
+            </div>
+
+            <div class="bottom_content">
+
+
+                <li class="mode">
+                    <div class="moon_sun">
+                        <i class="bx bx-moon icons moon"></i>
+                        <i class="bx bx-sun icons sun"></i>
+                    </div>
+
+                    <span class="text mode_text">Dark Mode</span>
+
+                    <div class="toggle_switch">
+                        <span class="switch"></span>
+                    </div>
+
+                </li>
+
+
+
+            </div>
+        </div>
+    </nav>
+
+    <section class="home">
+
+        <div class="h1_text">
+            <h1>查看病患病例</h1>
+
+            <div class="main_content">
+                <!-- <div class="select" style="display: block; float: left;">
+                    <img src="/assets/images/icon/head.png" alt="head"
+                        style="float: left; margin-top: 3%; margin-right: 3%;" width="30rem" height="30rem">
+                    <select onchange="updateChart('01')" id="idforValue01" class="select-box">
+                        <option value="請選擇頭部症狀">頭部症狀 ➤</option>
+                        <option value="">顏面浮腫</option>
+                        <option value="顏面神經麻痺">顏面神經麻痺</option>
+                        <option value="頭痛">頭痛</option>
+                        <option value="頭暈">頭暈</option>
+                        <option value="頭項強痛">頭項強痛</option>
+                        <option value="腦充血">腦充血</option>
+                    </select>
+                </div>
+                <div class="select" style="display: block; float: left;">
+                    <img src="/assets/images/icon/eyes.png" alt="eyes"
+                        style="float: left; margin-top: 3%; margin-right: 3%;" width="30rem" height="30rem">
+                    <select onchange="updateChart('02')" id="idforValue02" class="select-box">
+                        <option value="請選擇眼睛症狀">眼睛症狀 ➤</option>
+                        <option value="眼瞼痛">眼瞼痛</option>
+                        <option value="流淚">流淚</option>
+                        <option value="假性近視">假性近視</option>
+                        <option value="眼睛紅腫">眼睛紅腫</option>
+                        <option value="眼部疾病">眼部疾病</option>
+                        <option value="目赤痛癢">目赤痛癢</option>
+                        <option value="目視不明">目視不明</option>
+                        <option value="眼瞼震顫">眼瞼震顫</option>
+                        <option value="眼瞼癢痛">眼瞼癢痛</option>
+                        <option value="眼昏花">眼昏花</option>
+                        <option value="顏面癢腫">顏面癢腫</option>
+
+                        <option value="眼睛赤澀">眼睛赤澀</option>
+                        <option value="目赤腫痛">目赤腫痛</option>
+                        <option value="三叉神經痛">三叉神經痛</option>
+                    </select>
+                </div>
+                <div class="select" style="display: block; float: left;">
+                    <img src="/assets/images/icon/nose.png" alt="nose"
+                        style="float: left; margin-top: 3%; margin-right: 5%; margin-left: 1%;" width="30rem"
+                        height="30rem">
+                    <select onchange="updateChart('03')" id="idforValue03" class="select-box">
+                        <option value="請選擇鼻子症狀">鼻子症狀 ➤</option>
+                        <option value="鼻塞">鼻塞</option>
+                        <option value="鼻出血">鼻出血</option>
+                        <option value="鼻衄">鼻衄</option>
+                    </select>
+                </div>
+                <div class="select" style="display: block; float: left;">
+                    <img src="/assets/images/icon/throat.png" alt="throat"
+                        style="float: left; margin-top: 3%; margin-right: 5%; margin-left: 1%;" width="30rem"
+                        height="30rem">
+                    <select onchange="updateChart('04')" id="idforValue04" class="select-box">
+                        <option value="請選擇喉嚨症狀">喉嚨症狀 ➤</option>
+                        <option value="喉炎">喉炎</option>
+                        <option value="咽喉腫痛">咽喉腫痛</option>
+                        <option value="咽喉痛">咽喉痛</option>
+                        <option value="喘咳">喘咳</option>
+                        <option value="失音">失音</option>
+                        <option value="咽痛">咽痛</option>
+                    </select>
+                </div>
+                <div class="select" style="display: block; float: left;">
+                    <img src="/assets/images/icon/mouth.png" alt="mouth"
+                        style="float: left; margin-top: 3%; margin-right: 7%;" width="30rem" height="30rem">
+                    <select onchange="updateChart('05')" id="idforValue05" class="select-box">
+                        <option value="請選擇口部症狀">口部症狀 ➤</option>
+                        <option value="口眼歪斜">口眼歪斜</option>
+                        <option value="口歪">口歪</option>
+                        <option value="牙痛">牙痛</option>
+                        <option value="口乾">口乾</option>
+                        <option value="齲齒">齲齒</option>
+                        <option value="上牙痛">上牙痛</option>
+                    </select>
+                </div>
+                <div class="select" style="display: block; float: left;">
+                    <img src="/assets/images/icon/ear.png" alt="ear"
+                        style="float: left; margin-top: 3%; margin-right: 4%; margin-left: 3%;" width="30rem"
+                        height="30rem">
+                    <select onchange="updateChart('06')" id="idforValue06" class="select-box">
+                        <option value="請選擇耳部症狀">耳部症狀 ➤</option>
+                        <option value="耳聾">耳聾</option>
+                        <option value="耳豐">耳豐</option>
+                        <option value="耳鳴">耳鳴</option>
+                        <option value="聤耳">聤耳</option>
+                    </select>
+                </div>
+                <div class="select" style="display: block; float: left;">
+                    <img src="/assets/images/icon/fever.png" alt="fever"
+                        style="float: left; margin-top: 3%; margin-right: 3%;" width="30rem" height="30rem">
+                    <select onchange="updateChart('07')" id="idforValue07" class="select-box">
+                        <option value="請選擇四肢症狀">身體狀況 ➤</option>
+                        <option value="吞酸">吞酸</option>
+                        <option value="胸痛">胸痛</option>
+                        <option value="痙攣">痙攣</option>
+                        <option value="中風">中風</option>
+                        <option value="初中風">初中風</option>
+                        <option value="昏迷">昏迷</option>
+                        <option value="失眠">失眠</option>
+                        <option value="落枕">落枕</option>
+                        <option value="癲癇">癲癇</option>
+                        <option value="背酸痛">背酸痛</option>
+                        <option value="健忘">健忘</option>
+                        <option value="目眩">目眩</option>
+                        <option value="熱病">熱病</option>
+                        <option value="休克">休克</option>
+                        <option value="眩量">眩量</option>
+                        <option value="心絞痛">心絞痛</option>
+                        <option value="疼痛">疼痛</option>
+                        <option value="療瘡">療瘡</option>
+                        <option value="心悸">心悸</option>
+                        <option value="煩悶">煩悶</option>
+                        <option value="腰背痛">腰背痛</option>
+                        <option value="眩暈">眩暈</option>
+                        <option value="降血壓">降血壓</option>
+                        <option value="中暑">中暑</option>
+                        <option value="昏厥">昏厥</option>
+                        <option value="胸中氧滿">胸中氧滿</option>
+                        <option value="夜盲">夜盲</option>
+                        <option value="吐食">吐食</option>
+                        <option value="消化不良">消化不良</option>
+                        <option value="胃出血">胃出血</option>
+                        <option value="汗不出">汗不出</option>
+                        <option value="臂酸痛">臂酸痛</option>
+                        <option value="肘酸痛">肘酸痛</option>
+                        <option value="心煩">心煩</option>
+                        <option value="驚悸">驚悸</option>
+                        <option value="肩臂酸痛">肩臂酸痛</option>
+                        <option value="心痛">心痛</option>
+                        <option value="頸部痙攣">頸部痙攣</option>
+                        <option value="昏迷">昏迷</option>
+                        <option value="嘔吐">嘔吐</option>
+                    </select>
+                </div>
+                <div class="select" style="display: block; float: left;">
+                    <img src="/assets/images/icon/disease.png" alt="disease"
+                        style="float: left; margin-top: 3%; margin-right: 3%;" width="30rem" height="30rem">
+                    <select onchange="updateChart('08')" id="idforValue08" class="select-box">
+                        <option value="請選擇特殊疾病">特殊疾病 ➤</option>
+                        <option value="糖尿病">糖尿病</option>
+                        <option value="急慢性結膜炎">急慢性結膜炎</option>
+                        <option value="支氣管炎">支氣管炎</option>
+                        <option value="腮腺炎">腮腺炎</option>
+                        <option value="肋間神經痛">肋間神經痛</option>
+                        <option value="精神病">精神病</option>
+                        <option value="流行性感冒">流行性感冒</option>
+                        <option value="氣喘">氣喘</option>
+                        <option value="心胸痛">心胸痛</option>
+                        <option value="小兒慢性腸炎">小兒慢性腸炎</option>
+                        <option value="中耳炎">中耳炎</option>
+                        <option value="扁桃腺炎">扁桃腺炎</option>
+                    </select>
+                </div>
+                <div class="select" style="display: block; float: left;">
+                    <img src="/assets/images/icon/limb.png" alt="limb"
+                        style="float: left; margin-top: 3%; margin-right: 3%;" width="30rem" height="30rem">
+                    <select onchange="updateChart('09')" id="idforValue09" class="select-box">
+                        <option value="請選擇四肢症狀">四肢症狀 ➤</option>
+                        <option value="手臂紅腫">手臂紅腫</option>
+                        <option value="肩酸痛">肩酸痛</option>
+                        <option value="眼睛充血紅腫">眼睛充血紅腫</option>
+                        <option value="手掌癢">手掌癢</option>
+                        <option value="手指麻木">手指麻木</option>
+                        <option value="小指拘攣">小指拘攣</option>
+                        <option value="掌指麻痹">掌指麻痹</option>
+                        <option value="手指及肘臂攣痛">手指及肘臂攣痛</option>
+                        <option value="四肢腫脹">四肢腫脹</option>
+                        <option value="小指拘攣">小指拘攣</option>
+                        <option value="手腕痛">手腕痛</option>
+                        <option value="掌中熱">掌中熱</option>
+                    </select>
+                </div> -->
+
+                <div class="select" style="display: block; float: left;">
+                    <img src="/assets/images/icon/user.png" alt="user"
+                        style="float: left; margin-top: 3%; margin-right: 3%;" width="30rem" height="30rem">
+                    <select onchange="updateChart('01')" id="idforValue01" class="select-box">
+                        <option value="全部使用者">使用者 ➤</option>
+                        <option value="admin">admin</option>
+                        <option value="user">user</option>
+                        <option value="user01">user01</option>
+                        <option value="guest">guest</option>
+                    </select>
+                </div>
+                <a onclick="test_for_muti_chart()" class="main-button-slider" style="float: right;"> 全部使用者資訊 </a>
+                <div class="chartCard">
+                    <div class="chartBox">
+                        <select onchange="update_sort_date(event)" class="select-box" style="float: right;">
+                            <!-- <option value="date_range">日期範圍 ➤</option> -->
+                            <option value="hour">24小時內</option>
+                            <option value="day" selected="true">5日內</option>
+                            <option value="week">30日內</option>
+                            <option value="month">5月內</option>
+                            <option value="year">5年內</option>
+                        </select>
+                        <p id="myChart_label">--</p>
+                        <canvas id="myChart"></canvas>
+                        <button></button>
+                    </div>
+                </div>
+
+
+                <section class="section colored" id="feedback">
+                    <div class="container">
+                        <!-- ***** Section Title Start ***** -->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="center-heading">
+                                    <h2 class="section-title">回饋給我們</h2>
+                                </div>
+                            </div>
+                            <div class="offset-lg-3 col-lg-6">
+                                <div class="center-text">
+                                    <p>內容</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ***** Section Title End ***** -->
+
+                        <div class="row">
+                            <!-- ***** Contact Text Start ***** -->
+                            <div class="col-lg-4 col-md-6 col-sm-12">
+                                <h5 class="margin-bottom-30">notice!</h5>
+                                <div class="contact-text">
+                                    <p>如有使用上問題，或是問題反饋，請填寫這個表單。</p>
+                                    <p>目前一個帳號只能在一天內發送一次訊息
+                                        <br>否則系統將視為垃圾郵件
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- ***** Contact Text End ***** -->
+
+                            <!-- ***** Contact Form Start ***** -->
+                            <div class="col-lg-8 col-md-6 col-sm-12">
+                                <div class="contact-form">
+                                    <form id="contact" action="/message" method="post">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-12 col-sm-12">
+                                                <fieldset>
+                                                    <input name="name" type="text" class="form-control" id="name"
+                                                        placeholder="使用者名稱" required="">
+                                                </fieldset>
+                                            </div>
+                                            <div class="col-lg-6 col-md-12 col-sm-12">
+                                                <fieldset>
+                                                    <input name="email" type="text" class="form-control" id="email"
+                                                        placeholder="電子郵件" required="">
+                                                </fieldset>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <fieldset>
+                                                    <textarea name="message" rows="6" class="form-control" id="message"
+                                                        placeholder="訊息在這裡~" required=""></textarea>
+                                                </fieldset>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <fieldset>
+                                                    <button type="submit" id="form-submit"
+                                                        class="main-button">傳送</button>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- ***** Contact Form End ***** -->
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ***** Footer Start ***** -->
+                <footer>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <ul class="social">
+                                    <li><a href="https://www.facebook.com/TaiwanNQU/?locale=zh_TW"><i
+                                                class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                                    <li><a href="https://www.nqu.edu.tw/cht/index.php?"><i
+                                                class="fa fa-dribbble"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <p class="copyright">歧黃妙訣_AR穴位解析_AI問診</p>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+
+        </div>
+
+
+    </section>
+
+    <script>
+        const body = document.querySelector("body"),
+            sidebar = body.querySelector(".sidebar"),
+            toggle = body.querySelector(".toggle"),
+            searchBtn = body.querySelector(".search_box"),
+            modeSwitch = body.querySelector(".toggle_switch"),
+            modeText = body.querySelector(".mode_text");
+        page_top = body.querySelector(".page_top");
+
+        toggle.addEventListener("click", () => {
+            sidebar.classList.toggle("close");
+        });
+
+        searchBtn.addEventListener("click", () => {
+            sidebar.classList.remove("close");
+        });
+
+        modeSwitch.addEventListener("click", () => {
+            body.classList.toggle("dark");
+
+            if (body.classList.contains("dark")) {
+                modeText.innerText = "Light Mode"
+            }
+            else {
+                modeText.innerText = "Dark Mode"
+            }
+        });
+
+
+        if (page_top != null) {
+            page_top.addEventListener("click", () => {
+                document.body.scrollIntoView({
+                    behavior: "smooth"
+                })
+            })
+        }
+
+
+
+    </script>
+    <script src="/assets/js/jquery-2.1.0.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="/assets/js/popper.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+
+    <!-- Plugins -->
+    <script src="/assets/js/scrollreveal.min.js"></script>
+    <script src="/assets/js/waypoints.min.js"></script>
+    <script src="/assets/js/jquery.counterup.min.js"></script>
+    <script src="/assets/js/imgfix.min.js"></script>
+
+
+    <!-- chart.js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.js"></script>
+    <script>
+    </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
+    <script>
+        // setup 
+        var sort_date = "day"
+        const date_num = 5  // show how many date
+        var now_sym = "頭痛"
+
+        var values = [date_num]
+        let LT = new Date();
+
+        var interval = 1  // week
+        var sym_dict = {}
+        let fetch_data = []
+        var isall = false
+        sym_dict[now_sym] = 0
+        LT.setDate(LT.getDate() - (date_num * interval))
+        for (i = 0; i < date_num; i++) {
+            LT.setDate(LT.getDate() + interval);
+            values[i] = { date: (LT.getFullYear()).toString() + '/' + (LT.getMonth() + 1).toString() + '/' + (LT.getDate()).toString() + ' ~', symptom: { "--": 0 } }
+        }
+
+        function compare_time(lt, ft, tolerant) {
+            ft_l = ft.split(" ")  // 2002/04/04 05:03:03
+            ftl_0 = ft_l[0].split("/")  // [2002,04,04]
+            ftl_1 = ft_l[1].split(":")  // [05,03,03]
+            yy = lt.getFullYear()
+            ww = lt.getMonth() + 1
+            dd = lt.getDate()
+            hh = lt.getHours()
+            if (tolerant == "hour") {
+                if (yy == ftl_0[0] && ww == ftl_0[1] && dd == ftl_0[2] && Math.abs(hh + 1 - ftl_1[0]) < 4) return 1
+                else return 0
+            }
+            else if (tolerant == "day") {
+                if (yy == ftl_0[0] && ww == ftl_0[1] && dd == ftl_0[2]) return 1
+                else return 0
+            }
+            else if (tolerant == "week") {
+                if (yy == ftl_0[0] && ww == ftl_0[1] && Math.abs(dd - ftl_0[2]) < 3) return 1
+                else return 0
+            }
+            else if (tolerant == "month") {
+                if (yy == ftl_0[0] && ww == ftl_0[1]) return 1
+                else return 0
+            }
+            else if (tolerant == "year") {
+                console.log(yy)
+                if (yy == ftl_0[0]) return 1
+                else return 0
+            }
+
+        }
+
+        async function fetch_ai_query_data() {
+            var tmp = await window.fetch("get_chart_ai_query_info", {
+                body: '{"value":"' + now_sym + '"}',
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then((response) => {
+                //成功結果處理
+                console.log(response);
+                return response.json();
+            })
+                .catch((error) => {
+                    //錯誤結果處理
+                    console.log(error)
+                })
+            return tmp.user_info
+        }
+
+        const data = {
+            datasets: [{
+                label: 'chart',
+                data: values,
+                backgroundColor: [
+                    'rgba(255, 26, 104, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(0, 0, 0, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 26, 104, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(0, 0, 0, 1)'
+                ],
+                borderWidth: 1,
+                parsing: {
+                    xAxisKey: 'date',
+                    yAxisKey: '--',
+                }
+            }]
+        };
+
+        // config 
+        const config = {
+            type: 'line',
+            data,
+            options: {
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                },
+                parsing: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        };
+
+        // render init block
+        const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+
+        function update_sort_date(evt, pass_evt = false) {
+            let LT = new Date();
+            let values = [date_num]
+            if (!pass_evt) sort_date = evt.target.value
+            let interval = 1  // week
+            let sym_dict = {}
+            sym_dict[now_sym] = 0
+
+            if (isall) {
+                test_for_muti_chart()
+            }
+
+            if (sort_date == "hour") {
+                interval = 5
+                LT.setHours(LT.getHours() - (date_num * interval))
+                for (var i = 0; i < date_num; i++) {
+                    LT.setHours(LT.getHours() + interval);
+                    values[i] = { date: (LT.getMonth() + 1).toString() + '/' + (LT.getDate()).toString() + ' ' + (LT.getHours()).toString() + ':' + (LT.getMinutes()).toString() + ' ~', symptom: { [now_sym]: setup_chart_symptom_list_value(LT, fetch_data, sort_date) } }
+                }
+            }
+            else if (sort_date == "day") {
+                interval = 1
+                LT.setDate(LT.getDate() - (date_num * interval))
+                for (var i = 0; i < date_num; i++) {
+                    LT.setDate(LT.getDate() + interval);
+                    values[i] = { date: (LT.getFullYear()).toString() + '/' + (LT.getMonth() + 1).toString() + '/' + (LT.getDate()).toString() + ' ~', symptom: { [now_sym]: setup_chart_symptom_list_value(LT, fetch_data, sort_date) } }
+                }
+            }
+            else if (sort_date == "week") {
+                interval = 6
+                LT.setDate(LT.getDate() - (date_num * interval))
+                for (var i = 0; i < date_num; i++) {
+                    LT.setDate(LT.getDate() + interval);
+                    values[i] = { date: (LT.getFullYear()).toString() + '/' + (LT.getMonth() + 1).toString() + '/' + (LT.getDate()).toString() + ' ~', symptom: { [now_sym]: setup_chart_symptom_list_value(LT, fetch_data, sort_date) } }
+                }
+            }
+            else if (sort_date == "month") {
+                interval = 1
+                LT.setMonth(LT.getMonth() - (date_num * interval))
+                for (var i = 0; i < date_num; i++) {
+                    LT.setMonth(LT.getMonth() + interval);
+                    values[i] = { date: (LT.getFullYear()).toString() + '/' + (LT.getMonth() + 1).toString() + '/' + (LT.getDate()).toString() + ' ~', symptom: { [now_sym]: setup_chart_symptom_list_value(LT, fetch_data, sort_date) } }
+                }
+            }
+            else if (sort_date == "year") {
+                interval = 1
+                LT.setFullYear(LT.getFullYear() - (date_num * interval))
+                for (var i = 0; i < date_num; i++) {
+                    LT.setFullYear(LT.getFullYear() + interval);
+                    values[i] = { date: (LT.getFullYear()).toString() + '/' + (LT.getMonth() + 1).toString() + '/' + (LT.getDate()).toString() + ' ~', symptom: { [now_sym]: setup_chart_symptom_list_value(LT, fetch_data, sort_date) } }
+                    console.log(values[i])
+                }
+            }
+            myChart.data.datasets[0].data = values
+            myChart.data.datasets[0].label = now_sym
+            myChart.update();
+
+
+        }
+        async function updateChart(txt) {
+            isall = false
+            while (myChart.data.datasets) {
+                if (myChart.data.datasets.length == 1) {
+                    // myChart.data.datasets.pop()
+                    break
+                }
+                myChart.data.datasets.pop()
+            }
+            myChart.update();
+            now_sym = document.getElementById("idforValue" + txt).value
+            var myChart_label = document.getElementById("myChart_label")
+            myChart_label.innerHTML = now_sym
+            fetch_data = await fetch_ai_query_data()
+            update_sort_date("value", pass_evt = true)
+            myChart.data.datasets[0].parsing.yAxisKey = `symptom.${now_sym}`
+            myChart.data.datasets[0].label = now_sym
+            myChart.update();
+        }
+
+        async function fetch_all_ai_query_data() {
+            var tmp = await window.fetch("get_chart_ai_query_info", {
+                body: '{"value":"all"}',
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then((response) => {
+                console.log(response);
+                return response.json();
+            })
+                .catch((error) => {
+                    console.log(error)
+                })
+            return tmp.user_info
+        }
+
+        async function test_for_muti_chart() {
+            isall = true
+            var fetch_data = await fetch_all_ai_query_data()
+            var data_list = {}
+            fetch_data.forEach(element => {
+                if (data_list.hasOwnProperty(element[1])) data_list[element[1]].push(element)
+                else data_list[element[1]] = [element]
+            });
+            myChart.data.datasets[0].parsing.yAxisKey = `symptom.null`
+            myChart.update()
+            var count = 0
+            let LT = new Date();
+            let interval = 1  // week
+            if (sort_date == "hour") {
+                interval = 5
+                for (const [key, value] of Object.entries(data_list)) {
+
+                    count += 1
+                    LT.setHours(LT.getHours() - (date_num * interval))
+                    var new_value = []
+                    for (var i = 0; i < date_num; i++) {
+                        LT.setHours(LT.getHours() + interval);
+                        new_value.push(setup_chart_symptom_list_value(LT, value, sort_date))
+                    }
+                    myChart.data.datasets[count] = (
+                        {
+                            label: key,
+                            data: new_value,
+                            fill: false,
+                            borderColor: 'rgb(' + Math.floor(Math.random() * 255).toString() + ', ' + Math.floor(Math.random() * 255).toString() + ', ' + Math.floor(Math.random() * 255).toString() + ')',
+                            tension: 0
+                        }
+                    )
+                }
+            }
+            else if (sort_date == "day") {
+                interval = 1
+                for (const [key, value] of Object.entries(data_list)) {
+                    count += 1
+                    LT.setDate(LT.getDate() - (date_num * interval))
+                    var new_value = []
+                    for (var i = 0; i < date_num; i++) {
+                        LT.setDate(LT.getDate() + interval);
+                        new_value.push(setup_chart_symptom_list_value(LT, value, sort_date))
+                    }
+                    myChart.data.datasets[count] = (
+                        {
+                            label: key,
+                            data: new_value,
+                            fill: false,
+                            borderColor: 'rgb(' + Math.floor(Math.random() * 255).toString() + ', ' + Math.floor(Math.random() * 255).toString() + ', ' + Math.floor(Math.random() * 255).toString() + ')',
+                            tension: 0
+                        }
+                    )
+                }
+            }
+            else if (sort_date == "week") {
+                interval = 6
+                for (const [key, value] of Object.entries(data_list)) {
+                    count += 1
+                    LT.setDate(LT.getDate() - (date_num * interval))
+                    var new_value = []
+                    for (var i = 0; i < date_num; i++) {
+                        LT.setDate(LT.getDate() + interval);
+                        new_value.push(setup_chart_symptom_list_value(LT, value, sort_date))
+                    }
+                    myChart.data.datasets[count] = (
+                        {
+                            label: key,
+                            data: new_value,
+                            fill: false,
+                            borderColor: 'rgb(' + Math.floor(Math.random() * 255).toString() + ', ' + Math.floor(Math.random() * 255).toString() + ', ' + Math.floor(Math.random() * 255).toString() + ')',
+                            tension: 0
+                        }
+                    )
+                }
+
+            }
+            else if (sort_date == "month") {
+                interval = 1
+                for (const [key, value] of Object.entries(data_list)) {
+                    count += 1
+                    LT.setMonth(LT.getMonth() - (date_num * interval))
+                    var new_value = []
+                    for (var i = 0; i < date_num; i++) {
+                        LT.setMonth(LT.getMonth() + interval);
+                        new_value.push(setup_chart_symptom_list_value(LT, value, sort_date))
+                    }
+                    myChart.data.datasets[count] = (
+                        {
+                            label: key,
+                            data: new_value,
+                            fill: false,
+                            borderColor: 'rgb(' + Math.floor(Math.random() * 255).toString() + ', ' + Math.floor(Math.random() * 255).toString() + ', ' + Math.floor(Math.random() * 255).toString() + ')',
+                            tension: 0
+                        }
+                    )
+                }
+
+            }
+            else if (sort_date == "year") {
+                interval = 1
+                for (const [key, value] of Object.entries(data_list)) {
+                    count += 1
+                    console.log(count + "@@@@@@" + key + "@@@@@@" + value)
+                    LT.setFullYear(LT.getFullYear() - (date_num * interval))
+                    var new_value = []
+                    for (var i = 0; i < date_num; i++) {
+                        LT.setFullYear(LT.getFullYear() + interval);
+                        new_value.push(setup_chart_symptom_list_value(LT, value, sort_date))
+                    }
+                    myChart.data.datasets[count] = (
+                        {
+                            label: key,
+                            data: new_value,
+                            fill: false,
+                            borderColor: 'rgb(' + Math.floor(Math.random() * 255).toString() + ', ' + Math.floor(Math.random() * 255).toString() + ', ' + Math.floor(Math.random() * 255).toString() + ')',
+                            tension: 0
+                        }
+                    )
+                }
+            }
+
+            // myChart.data.datasets[1] = (
+            //     {
+            //         label: "test",
+            //         data: [62, 10, 55, 10, 12],
+            //         fill: false,
+            //         borderColor: 'rgb(75, 192, 192)',
+            //         tension: 0
+            //     }
+            // )
+            // myChart.data.datasets[2] = (
+            //     {
+            //         label: "test",
+            //         data: [2, 3, 4, 10, 5],
+            //         fill: false,
+            //         borderColor: 'rgb(75, 192, 192)',
+            //         tension: 0
+            //     }
+            // )
+            // console.log(myChart.data.datasets.push({a:1}))
+
+            console.log('123')
+            myChart.update();
+        }
+
+        function setup_chart_symptom_list_value(T, fetch_data, sort_date) {
+            var dn = 0
+            for (var j = 0; j < fetch_data.length; j++) {
+                // console.log(compare_time(LT, fetch_data[j][0], sort_date))
+                dn += compare_time(T, fetch_data[j][0], sort_date)
+            }
+            return dn
+        }
+    // Instantly assign Chart.js version
+    // const chartVersion = document.getElementById('chartVersion');
+    // chartVersion.innerText = Chart.version;
+    </script>
+
+    <!-- Global Init -->
+    <script src="/assets/js/custom.js"></script>
+</body>
+
+</html>

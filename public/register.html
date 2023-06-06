@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>register</title>
+    <meta name="description" content="主頁">
+    <meta name="keywords" content="AI資訊">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="/assets/images/icon/icon.png">
+
+    <!--css-->
+    <!-- <link rel="stylesheet" href="register.css"> -->
+
+    <!--boxicons css-->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,600;0,700;1,400&display=swap');
+
+
+*{
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    /* Colors*/
+    --body-color: #e4e9f7;
+    --sidebar-color: #fff;
+    --primary-color: #493cdb;
+    --primary-color-light: #ddd;
+    --toggle-color: rgb(77, 72, 72);
+    --text-color: #222020;
+
+    /*Transition*/
+    --tran-02: all 0.2s ease;
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.4s ease;
+    --tran-05: all 0.5s ease;
+    
+}
+
+body{
+    height: 100vh;
+    background: var(--body-color);
+    transition: var(--tran-05);
+}
+
+/*animation of page changing*/
+@keyframes transitionPage{
+    from{
+        opacity: 0;
+        transform: rotateX(-10deg);
+    }
+    to{
+        opacity: 1;
+        transform: rotateX(0deg);
+    }
+}
+
+
+/*reusebal css*/
+
+.sidebar .text{
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-color);
+    transition: var(--tran-05);
+    white-space: nowrap;
+}
+
+.sidebar .image{
+    min-width: 40px;
+    display: flex;
+    align-items:center;
+}
+
+body.dark{
+    --body-color: #18191a;
+    --sidebar-color: #242526;
+    --primary-color: #3a3b3c;
+    --primary-color-light: #3a3b3c;
+    --toggle-color: #fff;
+    --text-color: rgb(245, 241, 241);
+    --dragon_ball-color:#e20a0a;
+}
+
+
+
+
+
+
+
+/*sidebar*/
+.sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    padding: 10px 14px;
+    background: var(--sidebar-color);
+    transition: var(--tran-05);
+    z-index: 100;
+}
+
+.sidebar.close{
+    width: 78px;
+}
+
+
+/*reusebal css*/
+.sidebar.close .text{
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-color);
+    transition: var(--tran-05);
+    white-space: nowrap;
+    opacity: 1;
+}
+
+.sidebar.sidebar.close .text{
+    opacity: 0;
+}
+
+.sidebar .image{
+    min-width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar li{
+    height: 50px;
+    margin-top: 10px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar li .icons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 50px;
+    font-size: 20px;
+}
+
+.sidebar li .icons,
+.sidebar li .text{
+    color: var(--text-color);
+    transition:var(--tran-05);
+}
+
+.sidebar header{
+    position: relative;
+
+}
+
+.sidebar .image-text img{
+    width: 50px;
+    border-radius: 30px;
+}
+
+.sidebar header .image-text{
+    display: flex;
+    align-items: center;
+}
+
+header .image-text .text_header{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.text_header .name{
+    font-weight: 600;
+}
+
+.text_header .profession{
+    margin-top: -2px;
+}
+
+.sidebar header .toggle{
+    position: absolute;
+    top: 50%;
+    right: -25px;
+    transform: translateY(-50%);
+    height: 25px;
+    width: 25px;
+    background:#e20a0a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: var(--sidebar-color);
+    font-size: 30px;
+}
+
+.toggle:hover{
+    cursor: pointer;
+}
+
+
+body.dark .sidebar header .toggle{
+    color: var(--text-color);
+}
+
+.sidebar .menu{
+    margin-top: 35px;
+}
+
+.sidebar .search_box{
+    background:var(--primary-color-light);
+    border-radius: 6px;
+    transition: var(--tran-05);
+}
+
+.search_box input{
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    background: var(--primary-color-light);
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.sidebar li a{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 6px;
+    transition:var(--tran-05);
+}
+
+.sidebar li a:hover{
+    background: var(--primary-color);
+    cursor: pointer;
+}
+
+.sidebar  li a:hover .icons,
+.sidebar li a:hover .text{
+    color: var(--sidebar-color);
+    cursor: pointer;
+}
+
+body.dark .sidebar  li a:hover .icons,
+body.dark .sidebar li a:hover .text{
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+.sidebar .menu_bar{
+    height: calc(100% - 100px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 6px;
+}
+
+/*日間夜間模式*/
+
+.menu_bar .mode{
+    border-radius: 6px;
+    position: relative;
+    background: var(--primary-color-light);
+    transition: var(--tran-05);
+}
+
+.menu_bar .mode .moon_sun{
+    height: 50px;
+    width: 60px;
+    display: flex;
+    align-items: center;
+}
+
+
+.menu_bar .mode i{
+    position: absolute;
+    transition: var(--tran-05);
+}
+
+.menu_bar .mode i.sun{
+    opacity: 0;
+}
+
+body.dark .menu_bar .mode i.sun{
+    opacity: 1;
+}
+
+body.dark .menu_bar .mode i.moon{
+    opacity: 0;
+}
+
+.menu_bar .mode .toggle_switch{
+    position: absolute;
+    right: 0;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    min-width: 52px;
+    cursor: pointer;
+    background: var(--primary-color-light);
+    transition: var(--tran-05);
+    border-radius: 6px;
+}
+
+.toggle_switch .switch{
+    position: relative;
+    height: 22px;
+    width: 40px;
+    left: 5px;
+    border-radius: 25px;
+    background: var(--toggle-color);
+}
+
+.switch::before{
+    content: '';
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    top: 50%;
+    left: 3px;
+    transform: translateY(-50%);
+    background: var(--sidebar-color);
+    transition: var(--tran-05);
+}
+
+body.dark .switch::before{
+    left: 22px;
+}
+
+
+/*主頁面*/
+.home{
+    position: relative;
+    left: 250px;
+    height: 100vh;
+    width: calc(100% - 250px);
+    background: var(--body-color);
+    transition: var(--tran-05);
+    animation: transitionPage 1s;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.home .text{
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--text-color);
+    padding: 8px 40px;
+}
+
+
+.sidebar.close ~ .home{
+    left: 78px;
+    width: calc(100% - 78px);
+}
+
+.text .home_picture img{
+    width: 100%;
+    display: flex;
+}
+
+.loggin-box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    padding: 40px;
+    background: rgb(2, 20, 126);
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgb(238, 29, 29);
+    border-radius: 10px;
+}
+
+.loggin-box h2{
+    margin: 0 0 30px;
+    color:aliceblue;
+    padding: 0;
+    text-align: center;
+}
+
+.loggin-box .user-box{
+    position: relative;
+}
+
+
+.loggin-box .user-box input{
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: aliceblue;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+}
+
+.loggin-box .user-box label{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.loggin-box .user-box input:focus ~ label,
+.loggin-box .user-box input:valid ~ label{
+    top: -20px;
+    left: 0;
+    color: aqua;
+    font-size: 12px;
+}
+
+.loggin-box form a{
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    color: aqua;
+    font-size: 16px;
+    width: 100;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: .5s;
+    margin-top: 40px;
+    letter-spacing: 4px;
+    border: none;
+    border-radius: 30px;
+}
+
+.loggin-box form a + .submit{
+    margin-left: 30px;
+}
+
+.loggin-box .submit{
+    border-radius: 30px;
+    background-color: rgb(2, 20, 126);
+    cursor: pointer;
+    padding: 10px 20px;
+    color: aqua;
+    border: none;
+    font-size: 16px;
+    padding: 10px 20px;
+}
+
+.submit:hover{
+    background: aqua;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    border-radius: 30px;
+    box-shadow: 0 0 5px aqua,
+                0 0 25px aqua,
+                0 0 50px aqua,
+                0 0 100px aqua;
+}
+
+.loggin-box a:hover{
+    background: aqua;
+    color: #fff;
+    border-radius: 5px;
+    border-radius: 30px;
+    box-shadow: 0 0 5px aqua,
+                0 0 25px aqua,
+                0 0 50px aqua,
+                0 0 100px aqua;
+}
+
+.loggin-box a span{
+    position: absolute;
+    display: block;
+}
+
+
+.loggin-box a span:nth-child(1){
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, aqua);
+    animation: btn-anima1 1s linear infinite;
+}
+
+@keyframes btn-anima1{
+    0%{
+        left: -100%;
+    }
+    50%,100%{
+        left: 100%;
+    }
+}
+
+.loggin-box a span:nth-child(2){
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, aqua);
+    animation: btn-anima2 1s linear infinite;
+    animation-delay: .25s;
+}
+
+@keyframes btn-anima2{
+    0%{
+        top: -100%;
+    }
+    50%,100%{
+        top: 100%;
+    }
+}
+
+.loggin-box a span:nth-child(3){
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg, transparent, aqua);
+    animation: btn-anima3 1s linear infinite;
+    animation-delay: .5s;
+
+}
+
+@keyframes btn-anima3{
+    0%{
+        right: -100%;
+    }
+    50%,100%{
+        right: 100%;
+    }
+}
+.loggin-box a span:nth-child(4){
+    bottom: -100%;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg, transparent, aqua);
+    animation: btn-anima4 1s linear infinite;
+    animation-delay: .75s;
+
+}
+
+@keyframes btn-anima4{
+    0%{
+        bottom: -100%;
+    }
+    50%,100%{
+        bottom: 100%;
+    }
+}
+
+
+
+
+
+
+
+
+.home{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: linear-gradient(rgb(238, 238, 239),rgb(89, 44, 205));
+}
+
+
+.loggin-box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    padding: 40px;
+    background: rgb(2, 20, 126);
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgb(238, 29, 29);
+    border-radius: 10px;
+    transition: .5s;
+}
+
+.loggin-box:hover{
+    background: rgb(4, 26, 150);
+}
+
+.loggin-box h2{
+    margin: 0 0 30px;
+    color:rgb(247, 242, 243);
+    padding: 0;
+    text-align: center;
+}
+
+
+.loggin-box .user-box{
+    position: relative;
+}
+
+.loggin-box .user-box input{
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: aliceblue;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+}
+
+.loggin-box .user-box label{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.loggin-box .user-box input:focus ~ label,
+.loggin-box .user-box input:valid ~ label {
+    top: -30px;
+    left: 0;
+    color: aqua;
+    font-size: 14px;
+}
+
+.loggin-box form a{
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    color: aqua;
+    font-size: 16px;
+    width: 100;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: .5s;
+    margin-top: 40px;
+    letter-spacing: 4px;
+    border: none;
+    border-radius: 30px;
+}
+
+.loggin-box form a + a{
+    margin-left: 30px;
+}
+
+.loggin-box a:hover{
+    background: aqua;
+    color: #fff;
+    border-radius: 5px;
+    border-radius: 30px;
+    box-shadow: 0 0 5px aqua,
+                0 0 25px aqua,
+                0 0 50px aqua,
+                0 0 100px aqua;
+}
+
+.loggin-box a span{
+    position: absolute;
+    display: block;
+}
+
+
+.loggin-box a span:nth-child(1){
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, aqua);
+    animation: btn-anima1 1s linear infinite;
+}
+
+/* @keyframes btn-anima1{
+    0%{
+        left: -100%;
+    }
+    50%,100%{
+        left: 100%;
+    }
+}
+
+.loggin-box a span:nth-child(2){
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, aqua);
+    animation: btn-anima2 1s linear infinite;
+    animation-delay: .25s;
+}
+
+@keyframes btn-anima2{
+    0%{
+        top: -100%;
+    }
+    50%,100%{
+        top: 100%;
+    }
+}
+
+.loggin-box a span:nth-child(3){
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg, transparent, aqua);
+    animation: btn-anima3 1s linear infinite;
+    animation-delay: .5s;
+
+}
+
+@keyframes btn-anima3{
+    0%{
+        right: -100%;
+    }
+    50%,100%{
+        right: 100%;
+    }
+}
+.loggin-box a span:nth-child(4){
+    bottom: -100%;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg, transparent, aqua);
+    animation: btn-anima4 1s linear infinite;
+    animation-delay: .75s;
+
+}
+
+@keyframes btn-anima4{
+    0%{
+        bottom: -100%;
+    }
+    50%,100%{
+        bottom: 100%;
+    }
+} */
+    </style>
+
+</head>
+
+<!--icons的部分去  https://boxicons.com/ -->
+<body>
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="/assets/images/icon/icon.png" alt="dragon_ball"  >
+                </span>
+
+                <div class="text text_header">
+
+                    <span class="text name">岐黃妙訣</span>
+                    <span class="text profession">網頁版</span>
+                </div>
+
+            </div>
+
+            <i class='bx bx-chevron-right toggle' ></i>
+        </header>
+
+        <div class="menu_bar">
+            <div class="menu">
+
+
+                <ul class="menu_links">
+                    <li class="search_box">
+                        <a>
+                            <i class='bx bx-search icons' ></i>
+                            <input type="text" placeholder="搜尋 search">
+                        </a>
+                    </li>
+
+
+                    <li class="home_Button" id="home">
+                        <a class="main_page">
+                            <i class='bx bx-home-circle icons'></i>
+                            <span class="text nav_text">主頁</span>
+                        </a>
+                    </li>
+
+
+
+                    <li class="nav_link">
+                        <a>
+                            <i class='bx bx-history icons'></i>
+                            <span class="text nav_text">紀錄病例</span>
+                        </a>
+                    </li>
+
+                    <li class="nav_link">
+                        <a >
+                            <i class='bx bx-book-content icons'></i>
+                            <span class="text nav_text">查詢資料</span>
+                        </a>
+                    </li>
+
+                    <li class="nav_link">
+                        <a >
+                            <i class='bx bxs-edit-alt icons'></i>
+                            <span class="text nav_text">使用反饋</span>
+                            
+                        </a>
+                    </li>
+
+                    <li class="nav_link">
+                        <a >
+                            <i class='bx bx-wink-smile icons'></i>
+                            <span class="text nav_text">人員介紹</span>
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <div class="bottom_content">
+
+                    <li class="nav_link">
+                        <a class="loggout">
+                            <i class='bx bx-log-out icons'></i>
+                            <span class="text nav_text">登出</span>
+                        </a>
+                    </li>
+
+                    <li class="mode">
+                        <div class="moon_sun">
+                            <i class="bx bx-moon icons moon"></i>
+                            <i class="bx bx-sun icons sun"></i>
+                        </div>
+
+                        <span class="text mode_text">Dark Mode</span>
+
+                        <div class="toggle_switch">
+                            <span class="switch"></span>
+                        </div>
+
+                    </li>
+
+
+
+            </div>
+        </div>
+    </nav>
+
+    <section class="home">
+        <div class="text">
+            國立金門大學
+            <div class="picture">
+
+            </div>
+
+
+
+            <div class="loggin-box">
+                <h2>用戶註冊</h2>
+                <form method="POST" action="/sign_up">
+                    <div class="user-box">
+                        <input  type="text" name="name" id="name" required>
+                        <label for="username">
+                            使用者名稱
+                        </label>
+                    </div>
+                    
+                    <div class="user-box">
+                        <input type="email" name="email" id="email" " required>
+                        <label for="email">
+                            電子郵件(帳戶)
+                        </label>
+                    </div>
+
+                    <div class="user-box">
+                        <input type="text" name="phone" id="phone" " required>
+                        <label for="phone">
+                            電話號碼
+                        </label>
+                    </div>
+
+                    <div class="user-box">
+                        <input type="password" name="password" id="password" " required>
+                        <label for="password">
+                            密碼
+                        </label>
+                    </div>
+
+
+                    <input type="submit" value="確認" id="submit" class="submit">
+                </form>
+        </div>
+    </section>
+
+<script>
+        const body = document.querySelector("body"),
+    sidebar = body.querySelector(".sidebar"),
+    toggle = body.querySelector(".toggle"),
+    searchBtn = body.querySelector(".search_box"),
+    modeSwitch = body.querySelector(".toggle_switch"),
+    modeText = body.querySelector(".mode_text"),
+    home = body.querySelector(".main_page")
+
+toggle.addEventListener("click", () => {
+    sidebar.classList.toggle("close");
+});
+
+searchBtn.addEventListener("click", () => {
+    sidebar.classList.remove("close");
+});
+
+modeSwitch.addEventListener("click", () => {
+    body.classList.toggle("dark");
+
+    if(body.classList.contains("dark")){
+        modeText.innerText = "Light Mode"
+    }
+    else{
+        modeText.innerText = "Dark Mode"
+    }
+});
+
+home.addEventListener("click", () => {
+    document.location.href = "../main/main.html"
+})
+
+
+
+
+
+    
+
+
+</script>
+</body>
+
+</html>
